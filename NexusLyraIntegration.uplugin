@@ -2,8 +2,8 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-	"FriendlyName": "NexusLyra",
-	"Description": "Nexus integration example for a Lyra project",
+	"FriendlyName": "NexusLyraIntegration",
+	"Description": "",
 	"Category": "Game Features",
 	"CreatedBy": "Nexus",
 	"CreatedByURL": "",
@@ -17,18 +17,14 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "NexusLyraRuntime",
+			"Name": "NexusLyraIntegrationRuntime",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
 	],
 	"ExplicitlyLoaded": true,
-	"BuiltInInitialFeatureState": "Registered",
+	"BuiltInInitialFeatureState": "Active",
 	"Plugins": [
-		{
-			"Name": "ShooterCore",
-			"Enabled": true
-		},
 		{
 			"Name": "NexusUnrealSDK",
 			"Enabled": true

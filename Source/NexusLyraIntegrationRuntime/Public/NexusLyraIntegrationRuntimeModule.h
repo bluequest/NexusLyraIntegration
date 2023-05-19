@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FNexusLyraRuntimeModule : public IModuleInterface
+class FNexusLyraIntegrationRuntimeModule : public IModuleInterface
 {
 public:
 	//~IModuleInterface

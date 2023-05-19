@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class NexusLyraRuntime : ModuleRules
+public class NexusLyraIntegrationRuntime : ModuleRules
 {
-	public NexusLyraRuntime(ReadOnlyTargetRules Target) : base(Target)
+	public NexusLyraIntegrationRuntime(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
@@ -26,18 +26,6 @@ public class NexusLyraRuntime : ModuleRules
 			new string[]
 			{
 				"Core",
-				"CoreUObject",
-				"Engine",
-				"InputCore",
-				"HeadMountedDisplay",
-				"NavigationSystem",
-				"AIModule",
-				"Niagara",
-				"LyraGame",
-				"EnhancedInput",
-				"ApplicationCore",
-				"NexusUnrealSDK",
-				"UMG",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
