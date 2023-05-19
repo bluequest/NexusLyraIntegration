@@ -4,6 +4,8 @@
 #include "UI/LinkAccountUserWidget.h"
 #include "NexusLyraIntegrationRuntime/NexusSampleProjectCharacter.h"
 #include "Components/Button.h"
+#include "NexusSampleProjectHUD.h"
+#include "Kismet/GameplayStatics.h"
 #include "Components/TextBlock.h"
 
 void ULinkAccountUserWidget::NativeConstruct()
@@ -45,10 +47,10 @@ void ULinkAccountUserWidget::UpdatePlayerReferralCode()
 
 void ULinkAccountUserWidget::OnBackButtonPressed()
 {
-	if (ANexusSampleProjectCharacter* CharacterRef = Cast<ANexusSampleProjectCharacter>(GetOwningPlayerPawn()))
+	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
 	{
 		RemoveFromParent();
-		CharacterRef->LinkAccountWidget = nullptr;
+		HUD->LinkAccountWidget = nullptr;
 	}
 }
 
