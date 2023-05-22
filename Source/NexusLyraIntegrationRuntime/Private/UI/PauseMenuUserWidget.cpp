@@ -2,8 +2,6 @@
 
 
 #include "UI/PauseMenuUserWidget.h"
-#include "NexusLyraIntegrationRuntime/NexusSampleProjectCharacter.h"
-#include "NexusSampleProjectHUD.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/Button.h"
 #include "CommonUIExtensions.h"

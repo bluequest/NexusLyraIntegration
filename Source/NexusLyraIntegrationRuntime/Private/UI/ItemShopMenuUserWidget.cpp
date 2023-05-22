@@ -2,10 +2,8 @@
 
 
 #include "UI/ItemShopMenuUserWidget.h"
-#include "NexusLyraIntegrationRuntime/NexusSampleProjectCharacter.h"
 #include "NexusLyraIntegrationRuntime/Public/NexusSampleProjectSaveGame.h"
 #include "Kismet/GameplayStatics.h"
-#include "NexusSampleProjectHUD.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 

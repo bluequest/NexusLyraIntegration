@@ -3,9 +3,7 @@
 
 #include "UI/ReferralsBountiesMenuUserWidget.h"
 #include "UI/BountiesUserWidget.h"
-#include "NexusLyraIntegrationRuntime/NexusSampleProjectCharacter.h"
 #include "Components/Button.h"
-#include "NexusSampleProjectHUD.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/TextBlock.h"
 #include "Runtime/ApplicationCore/Public/HAL/PlatformApplicationMisc.h"

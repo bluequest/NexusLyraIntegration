@@ -2,9 +2,7 @@
 
 
 #include "UI/BountiesUserWidget.h"
-#include "NexusLyraIntegrationRuntime/NexusSampleProjectCharacter.h"
 #include "Kismet/GameplayStatics.h"
-#include "NexusSampleProjectHUD.h"
 #include "Components/Button.h"
 
 void UBountiesUserWidget::SetupInitialFocus(APlayerController* Controller)

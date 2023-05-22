@@ -2,9 +2,7 @@
 
 
 #include "UI/LinkAccountUserWidget.h"
-#include "NexusLyraIntegrationRuntime/NexusSampleProjectCharacter.h"
 #include "Components/Button.h"
-#include "NexusSampleProjectHUD.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/TextBlock.h"
 
