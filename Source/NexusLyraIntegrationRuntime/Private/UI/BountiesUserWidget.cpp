@@ -29,12 +29,3 @@ void UBountiesUserWidget::NativeConstruct()
 		BackButton->OnClicked.AddDynamic(this, &UBountiesUserWidget::OnBackButtonPressed);
 	}
 }
-
-void UBountiesUserWidget::OnBackButtonPressed()
-{
-	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-	{
-		RemoveFromParent();
-		HUD->BountiesWidget = nullptr;
-	}
-}

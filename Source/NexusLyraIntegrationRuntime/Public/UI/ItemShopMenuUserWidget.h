@@ -41,10 +41,6 @@ protected:
 
 private:
 
-	/** Callback for when the back button is pressed */
-	UFUNCTION(BlueprintCallable, Category = "Item shop buttons")
-	void OnBackButtonPressed();
-
 	/** Callback for when loading the save game from slot completes */
 	void OnAsyncLoadGameFromSlotComplete(const FString& SlotName, const int32 UserIndex, USaveGame* OutSaveGame);
 };

@@ -41,10 +41,6 @@ public:
 	void UpdatePlayerReferralCode();
 
 private:
-	
-	/** Callback for when the back button is pressed */
-	UFUNCTION(BlueprintCallable, Category = "Link Account Menu Buttons")
-	void OnBackButtonPressed();
 
 	/** NexusAPI - Callback for when retrieving the player's referral code completes */
 	void OnGetPlayerReferralCodeComplete(FString& ReferralCode, bool bWasSuccessful);

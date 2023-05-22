@@ -23,13 +23,14 @@ public:
 	void SetupInitialFocus(APlayerController* Controller) override;
 
 	UPROPERTY(EditAnywhere, Category = "Menu Class Types")
-	TSubclassOf<UCreatorSupportUserWidget> CreatorSupportWidgetClass;
+	TSoftClassPtr<UCreatorSupportUserWidget> CreatorSupportWidgetClass;
 
 	UPROPERTY(EditAnywhere, Category = "Menu Class Types")
-	TSubclassOf<UReferralsBountiesMenuUserWidget> ReferralsBountiesMenuWidgetClass;
+	TSoftClassPtr<UReferralsBountiesMenuUserWidget> ReferralsBountiesMenuWidgetClass;
 	
 	UPROPERTY(EditAnywhere, Category = "Menu Class Types")
-	TSubclassOf<UItemShopMenuUserWidget> ItemShopMenuWidgetClass;
+	TSoftClassPtr<UItemShopMenuUserWidget> ItemShopMenuWidgetClass;
+
 
 protected:
 
@@ -52,10 +53,6 @@ protected:
 	UButton* ItemShopButton;
 
 private:
-
-	/** Callback for when the back button is pressed */
-	UFUNCTION(BlueprintCallable, Category = "Pause Menu Buttons")
-	void OnBackButtonPressed();
 
 	/** Callback for when the creator support button is pressed */
 	UFUNCTION(BlueprintCallable, Category = "Pause Menu Buttons")

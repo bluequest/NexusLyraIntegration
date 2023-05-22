@@ -10,6 +10,8 @@
 #include "Components/TextBlock.h"
 #include "Runtime/ApplicationCore/Public/HAL/PlatformApplicationMisc.h"
 #include "Components/EditableTextBox.h"
+#include "CommonUIExtensions.h"
+#include "NativeGameplayTags.h"
 
 void UReferralsBountiesMenuUserWidget::SetupInitialFocus(APlayerController* Controller)
 {
@@ -74,15 +76,6 @@ void UReferralsBountiesMenuUserWidget::NativeConstruct()
 	// #TODO Query bounties (https://api.nexus.gg/v1/bounties/), then populate entries
 }
 
-void UReferralsBountiesMenuUserWidget::OnBackButtonPressed()
-{
-	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-	{
-		RemoveFromParent();
-		HUD->ReferralsBountiesMenuWidget = nullptr;
-	}
-}
-
 void UReferralsBountiesMenuUserWidget::OnSubmitButtonPressed()
 {
 	if (ensureMsgf(IsValid(ReferralCodeInputTextBox), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
@@ -120,31 +113,17 @@ void UReferralsBountiesMenuUserWidget::OnCopyButtonPressed()
 
 void UReferralsBountiesMenuUserWidget::OnLinkAccountButtonPressed()
 {
-	ensureMsgf(IsValid(LinkAccountWidgetClass), BP_ENSURE_REASON_INVALID_CLASS_WIDGET);
-	ULinkAccountUserWidget* LinkAccountWidgetRef = CreateWidget<ULinkAccountUserWidget>(GetWorld(), LinkAccountWidgetClass);
-	if (IsValid(LinkAccountWidgetRef))
+	if (ensureMsgf(!EscapeMenuClass.IsNull(), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 	{
-		LinkAccountWidgetRef->AddToViewport();
-
-		if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-		{
-			HUD->LinkAccountWidget = LinkAccountWidgetRef;
-		}
+		UCommonUIExtensions::PushStreamedContentToLayer_ForPlayer(GetOwningLocalPlayer(), TAG_UI_LAYER_MENU, LinkAccountWidgetClass);
 	}
 }
 
 void UReferralsBountiesMenuUserWidget::OnViewBountiesButtonPressed()
 {
-	ensureMsgf(IsValid(BountiesWidgetClass), BP_ENSURE_REASON_INVALID_CLASS_WIDGET);
-	UBountiesUserWidget* BountiesWidgetRef = CreateWidget<UBountiesUserWidget>(GetWorld(), BountiesWidgetClass);
-	if (IsValid(BountiesWidgetRef))
+	if(ensureMsgf(!EscapeMenuClass.IsNull(), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 	{
-		BountiesWidgetRef->AddToViewport();
-
-		if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-		{
-			HUD->BountiesWidget = BountiesWidgetRef;
-		}
+		UCommonUIExtensions::PushStreamedContentToLayer_ForPlayer(GetOwningLocalPlayer(), TAG_UI_LAYER_MENU, BountiesWidgetClass);
 	}
 }
 

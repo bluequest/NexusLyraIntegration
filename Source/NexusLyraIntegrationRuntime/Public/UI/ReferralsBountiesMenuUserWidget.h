@@ -25,10 +25,10 @@ public:
 	void SetupInitialFocus(APlayerController* Controller) override;
 
 	UPROPERTY(EditAnywhere, Category = "Menu Class Types")
-	TSubclassOf<ULinkAccountUserWidget> LinkAccountWidgetClass;
+	TSoftClassPtr<ULinkAccountUserWidget> LinkAccountWidgetClass;
 
 	UPROPERTY(EditAnywhere, Category = "Menu Class Types")
-	TSubclassOf<UBountiesUserWidget> BountiesWidgetClass;
+	TSoftClassPtr<UBountiesUserWidget> BountiesWidgetClass;
 
 	UFUNCTION(BlueprintCallable, Category = "Nexus API")
 	void UpdatePlayerReferralCode();
@@ -76,10 +76,6 @@ protected:
 	//NexusSDK::FOnSubmitReferralCodeComplete OnSubmitReferralCodeCompleteDelegate;
 
 private:
-	
-	/** Callback for when the back button is pressed */
-	UFUNCTION(BlueprintCallable, Category = "Referrals & Bounties Menu Buttons")
-	void OnBackButtonPressed();
 
 	/** Callback for when the submit button is pressed */
 	UFUNCTION(BlueprintCallable, Category = "Referrals & Bounties Menu Buttons")

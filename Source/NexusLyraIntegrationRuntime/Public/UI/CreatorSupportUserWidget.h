@@ -54,10 +54,6 @@ protected:
 
 private:
 
-	/** Callback for when the back button is pressed */
-	UFUNCTION(BlueprintCallable, Category = "Creator Support Menu Buttons")
-	void OnBackButtonPressed();
-
 	/** Callback for when the submit button is pressed */
 	UFUNCTION(BlueprintCallable, Category = "Creator Support Menu Buttons")
 	void OnSubmitButtonPressed();

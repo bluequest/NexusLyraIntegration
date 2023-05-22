@@ -49,6 +49,10 @@ public class NexusLyraIntegrationRuntime : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"CommonUI",
+				"CommonInput",
+				"CommonGame",
+				"GameplayTags"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

@@ -45,15 +45,6 @@ void ULinkAccountUserWidget::UpdatePlayerReferralCode()
 	OnGetPlayerReferralCodeComplete(TestString, true);
 }
 
-void ULinkAccountUserWidget::OnBackButtonPressed()
-{
-	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-	{
-		RemoveFromParent();
-		HUD->LinkAccountWidget = nullptr;
-	}
-}
-
 void ULinkAccountUserWidget::OnGetPlayerReferralCodeComplete(FString& ReferralCode, bool bWasSuccessful)
 {
 	if (bWasSuccessful)

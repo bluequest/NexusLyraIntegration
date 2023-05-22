@@ -5,13 +5,14 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "NexusLyraIntegrationRuntime/Public/NexusSampleProjectGlobals.h"
+#include "CommonActivatableWidget.h"
 #include "NexusSampleProjectBaseWidget.generated.h"
 
 /**
  *  Widget base class to derive from for this sample project
  */
 UCLASS()
-class NEXUSLYRAINTEGRATIONRUNTIME_API UNexusSampleProjectBaseWidget : public UUserWidget
+class NEXUSLYRAINTEGRATIONRUNTIME_API UNexusSampleProjectBaseWidget : public UCommonActivatableWidget
 {
 	GENERATED_BODY()
 
@@ -23,6 +24,13 @@ public:
 	 * @param Controller the APlayerController instance to set focus
 	 */
 	virtual void SetupInitialFocus(APlayerController* Controller);
+
+	UPROPERTY(EditDefaultsOnly)
+		TSoftClassPtr<UCommonActivatableWidget> EscapeMenuClass;
+
+	/** Callback for when the back button is pressed */
+	UFUNCTION(BlueprintCallable, Category = "Menu Buttons")
+		void OnBackButtonPressed();
 
 protected:
 

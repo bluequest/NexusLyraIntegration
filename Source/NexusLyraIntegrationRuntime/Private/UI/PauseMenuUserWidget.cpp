@@ -6,6 +6,8 @@
 #include "NexusSampleProjectHUD.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/Button.h"
+#include "CommonUIExtensions.h"
+#include "NativeGameplayTags.h"
 
 void UPauseMenuUserWidget::NativeConstruct()
 {
@@ -32,57 +34,27 @@ void UPauseMenuUserWidget::NativeConstruct()
 	}
 }
 
-void UPauseMenuUserWidget::OnBackButtonPressed()
-{
-	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-	{
-		RemoveFromParent();
-		HUD->PauseMenuWidget = nullptr;
-	}
-}
-
 void UPauseMenuUserWidget::OnCreatorSupportButtonPressed()
 {
-	ensureMsgf(IsValid(CreatorSupportWidgetClass), BP_ENSURE_REASON_INVALID_CLASS_WIDGET);
-	UCreatorSupportUserWidget* CreatorSupportWidget = CreateWidget<UCreatorSupportUserWidget>(GetWorld(), CreatorSupportWidgetClass);
-	if (IsValid(CreatorSupportWidget))
+	if (ensureMsgf(!CreatorSupportWidgetClass.IsNull(), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 	{
-		CreatorSupportWidget->AddToViewport();
-
-		if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-		{
-			HUD->CreatorSupportWidget = CreatorSupportWidget;
-		}
+		UCommonUIExtensions::PushStreamedContentToLayer_ForPlayer(GetOwningLocalPlayer(), TAG_UI_LAYER_MENU, CreatorSupportWidgetClass);
 	}
 }
 
 void UPauseMenuUserWidget::OnReferralsBountiesButtonPressed()
 {
-	ensureMsgf(IsValid(ReferralsBountiesMenuWidgetClass), BP_ENSURE_REASON_INVALID_CLASS_WIDGET);
-	UReferralsBountiesMenuUserWidget* ReferralsBountiesMenuWidget = CreateWidget<UReferralsBountiesMenuUserWidget>(GetWorld(), ReferralsBountiesMenuWidgetClass);
-	if (IsValid(ReferralsBountiesMenuWidget))
+	if (ensureMsgf(!ReferralsBountiesMenuWidgetClass.IsNull(), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 	{
-		ReferralsBountiesMenuWidget->AddToViewport();
-
-		if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-		{
-			HUD->ReferralsBountiesMenuWidget = ReferralsBountiesMenuWidget;
-		}
+		UCommonUIExtensions::PushStreamedContentToLayer_ForPlayer(GetOwningLocalPlayer(), TAG_UI_LAYER_MENU, ReferralsBountiesMenuWidgetClass);
 	}
 }
 
 void UPauseMenuUserWidget::OnItemShopButtonPressed()
 {
-	ensureMsgf(IsValid(ItemShopMenuWidgetClass), BP_ENSURE_REASON_INVALID_CLASS_WIDGET);
-	UItemShopMenuUserWidget* ItemShopMenuWidget = CreateWidget<UItemShopMenuUserWidget>(GetWorld(), ItemShopMenuWidgetClass);
-	if (IsValid(ItemShopMenuWidget))
+	if (ensureMsgf(!ItemShopMenuWidgetClass.IsNull(), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 	{
-		ItemShopMenuWidget->AddToViewport();
-
-		if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-		{
-			HUD->ItemShopMenuWidget = ItemShopMenuWidget;
-		}
+		UCommonUIExtensions::PushStreamedContentToLayer_ForPlayer(GetOwningLocalPlayer(), TAG_UI_LAYER_MENU, ItemShopMenuWidgetClass);
 	}
 }
 

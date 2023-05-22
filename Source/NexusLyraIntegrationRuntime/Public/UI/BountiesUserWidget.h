@@ -26,11 +26,5 @@ protected:
 	/** UButton for returning to game */
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UButton* BackButton;
-
-private:
-
-	/** Callback for when the back button is pressed */
-	UFUNCTION(BlueprintCallable, Category = "Bounties Menu Buttons")
-	void OnBackButtonPressed();
 	
 };

@@ -50,20 +50,6 @@ void UCreatorSupportUserWidget::NativeConstruct()
 		);
 }
 
-void UCreatorSupportUserWidget::OnBackButtonPressed()
-{
-	auto HUD_TEST = UGameplayStatics::GetPlayerController(this, 0)->GetHUD();
-
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, HUD_TEST->GetName());
-
-	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-	{
-		RemoveFromParent();
-		HUD->CreatorSupportWidget = nullptr;
-	}
-}
-
 void UCreatorSupportUserWidget::OnSubmitButtonPressed()
 {
 	if (ensureMsgf(IsValid(CreatorCodeInputTextBox), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))

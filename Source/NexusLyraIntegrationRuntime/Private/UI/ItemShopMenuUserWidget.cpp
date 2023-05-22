@@ -44,15 +44,6 @@ void UItemShopMenuUserWidget::NativeConstruct()
 	UpdateCreatorCodeDisplay();
 }
 
-void UItemShopMenuUserWidget::OnBackButtonPressed()
-{
-	if (ANexusSampleProjectHUD* HUD = Cast<ANexusSampleProjectHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD()))
-	{
-		RemoveFromParent();
-		HUD->ItemShopMenuWidget = nullptr;
-	}
-}
-
 void UItemShopMenuUserWidget::OnAsyncLoadGameFromSlotComplete(const FString& SlotName, const int32 UserIndex, USaveGame* OutSaveGame)
 {
 	if (UNexusSampleProjectSaveGame* SaveGameRef = Cast<UNexusSampleProjectSaveGame>(OutSaveGame))
