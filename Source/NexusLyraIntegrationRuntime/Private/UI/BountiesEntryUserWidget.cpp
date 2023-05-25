@@ -8,10 +8,6 @@
 #include "Components/TextBlock.h"
 #include "Components/ProgressBar.h"
 
-void UBountiesEntryUserWidget::SetupInitialFocus(APlayerController* Controller)
-{
-}
-
 void UBountiesEntryUserWidget::SetBountyProgressBar(float InPercent)
 {
 	ensureMsgf(IsValid(BountyProgressBar), BP_ENSURE_REASON_INVALID_CLASS_WIDGET);
@@ -74,8 +70,6 @@ void UBountiesEntryUserWidget::SetBountyTitle(FString InTitle)
 void UBountiesEntryUserWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	SetupInitialFocus(GetOwningPlayer());
 
 	if (ensureMsgf(IsValid(CollectBountyButton), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 	{

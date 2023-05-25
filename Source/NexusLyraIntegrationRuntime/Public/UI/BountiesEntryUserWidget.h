@@ -16,18 +16,11 @@ class UProgressBar;
  * Widget entry to display information about a referral bounty
  */
 UCLASS()
-class NEXUSLYRAINTEGRATIONRUNTIME_API UBountiesEntryUserWidget : public UUserWidget
+class NEXUSLYRAINTEGRATIONRUNTIME_API UBountiesEntryUserWidget : public UNexusSampleProjectBaseWidget
 {
 	GENERATED_BODY()
 
 public: 
-
-	/**
-	 * Used to setup initial focus and input mode
-	 *
-	 * @param Controller the APlayerController instance to set focus
-	 */
-	virtual void SetupInitialFocus(APlayerController* Controller);
 
 	UFUNCTION(BlueprintCallable)
 	void SetBountyProgressBar(float InPercent);
