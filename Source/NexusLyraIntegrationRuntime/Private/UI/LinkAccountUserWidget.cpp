@@ -2,6 +2,7 @@
 
 
 #include "UI/LinkAccountUserWidget.h"
+#include "NexusSampleProjectSaveGame.h"
 #include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/TextBlock.h"
@@ -34,39 +35,28 @@ void ULinkAccountUserWidget::SetupInitialFocus(APlayerController* Controller)
 
 void ULinkAccountUserWidget::UpdatePlayerReferralCode()
 {
-	// #TODO Replace logic when Unreal SDK template is in.
-	//OnGetReferralCodeCompleteDelegate.BindUObject(this, &UReferralsBountiesMenuUserWidget::OnGetPlayerReferralCodeComplete);
-	//NexusSDK::GetPlayerReferralCode(32, 32, OnGetReferralCodeCompleteDelegate);
-
-	// #TODO Replace logic below when NexusSDK::GetPlayerReferralCode is in
-	FString TestString = TEXT("Testing!");
-	OnGetPlayerReferralCodeComplete(TestString, true);
+	// Load referral code
+	UGameplayStatics::AsyncLoadGameFromSlot(
+		SAVELOAD_SLOT_NAME,
+		GetOwningLocalPlayer()->GetLocalPlayerIndex(),
+		FAsyncLoadGameFromSlotDelegate::CreateUObject(this, &ULinkAccountUserWidget::OnAsyncLoadGameFromSlotComplete)
+	);
 }
 
-void ULinkAccountUserWidget::OnGetPlayerReferralCodeComplete(FString& ReferralCode, bool bWasSuccessful)
+void ULinkAccountUserWidget::OnAsyncLoadGameFromSlotComplete(const FString& SlotName, const int32 UserIndex, USaveGame* OutSaveGame)
 {
-	if (bWasSuccessful)
+	if (UNexusSampleProjectSaveGame* SaveGameRef = Cast<UNexusSampleProjectSaveGame>(OutSaveGame))
 	{
 		if (ensureMsgf(IsValid(PlayerReferralCode), BP_ENSURE_REASON_INVALID_CLASS_WIDGET))
 		{
-			PlayerReferralCode->SetText(FText::FromString(ReferralCode));
-		}
+			PlayerReferralCode->SetText(FText::FromString(*SaveGameRef->CreatorCode));
 
-		// Logging
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Get player referral code succeeded! ReferralCode: %s"), *ReferralCode));
-		}
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Referral code loaded from save game!")));
+			}
 
-		UE_LOG(LogTemp, Log, TEXT("Get player referral code succeeded! ReferralCode: %s"), *ReferralCode);
-	}
-	else 
-	{
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Get player referral code failed!"));
+			UE_LOG(LogTemp, Log, TEXT("Referral Code loaded from disk"));
 		}
-
-		UE_LOG(LogTemp, Error, TEXT("Get player referral code failed!"));
 	}
 }
